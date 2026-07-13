@@ -51,7 +51,14 @@ export function MissionLayout({ missionId }: MissionLayoutProps) {
   );
 }
 
-const NAV = [
+type NavItem = {
+  to: "/missions/$missionId" | "/missions/$missionId/lesson" | "/missions/$missionId/activities" | "/missions/$missionId/scratch" | "/missions/$missionId/quiz" | "/missions/$missionId/homework" | "/missions/$missionId/resources" | "/missions/$missionId/teacher" | "/missions/$missionId/journal" | "/missions/$missionId/complete";
+  label: string;
+  icon: typeof BookOpen;
+  exact?: boolean;
+};
+
+const NAV: NavItem[] = [
   { to: "/missions/$missionId", label: "Mission Hub", icon: BookOpen, exact: true },
   { to: "/missions/$missionId/lesson", label: "Interactive Lesson", icon: Sparkles },
   { to: "/missions/$missionId/activities", label: "Activities", icon: Puzzle },
@@ -62,7 +69,7 @@ const NAV = [
   { to: "/missions/$missionId/teacher", label: "Teacher Notes", icon: GraduationCap },
   { to: "/missions/$missionId/journal", label: "Mission Journal", icon: Notebook },
   { to: "/missions/$missionId/complete", label: "Mission Complete", icon: Trophy },
-] as const;
+];
 
 function MissionSidebar({ missionId }: { missionId: string }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

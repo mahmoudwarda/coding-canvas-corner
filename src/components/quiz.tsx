@@ -25,17 +25,13 @@ export function Quiz({ mission }: { mission: Mission }) {
   }
 
   function next() {
+    const finalScore = score;
     if (i < total - 1) {
       setI(i + 1);
       setChosen(null);
     } else {
       setDone(true);
-      setQuizScore(score + (chosen === q.answerIndex ? 0 : 0)); // score already updated
-      setQuizScore(score + (chosen === q.answerIndex ? 0 : 0));
-      setQuizScore(score);
-      setQuizScore(score);
-      // The above chain is defensive; final call:
-      setQuizScore(score);
+      setQuizScore(finalScore);
     }
   }
 

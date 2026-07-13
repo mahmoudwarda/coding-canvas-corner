@@ -9,38 +9,200 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CurriculumRouteImport } from './routes/curriculum'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MissionsMissionIdRouteImport } from './routes/missions.$missionId'
+import { Route as MissionsMissionIdIndexRouteImport } from './routes/missions.$missionId.index'
+import { Route as MissionsMissionIdTeacherRouteImport } from './routes/missions.$missionId.teacher'
+import { Route as MissionsMissionIdScratchRouteImport } from './routes/missions.$missionId.scratch'
+import { Route as MissionsMissionIdResourcesRouteImport } from './routes/missions.$missionId.resources'
+import { Route as MissionsMissionIdQuizRouteImport } from './routes/missions.$missionId.quiz'
+import { Route as MissionsMissionIdLessonRouteImport } from './routes/missions.$missionId.lesson'
+import { Route as MissionsMissionIdJournalRouteImport } from './routes/missions.$missionId.journal'
+import { Route as MissionsMissionIdHomeworkRouteImport } from './routes/missions.$missionId.homework'
+import { Route as MissionsMissionIdCompleteRouteImport } from './routes/missions.$missionId.complete'
+import { Route as MissionsMissionIdActivitiesRouteImport } from './routes/missions.$missionId.activities'
 
+const CurriculumRoute = CurriculumRouteImport.update({
+  id: '/curriculum',
+  path: '/curriculum',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MissionsMissionIdRoute = MissionsMissionIdRouteImport.update({
+  id: '/missions/$missionId',
+  path: '/missions/$missionId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionsMissionIdIndexRoute = MissionsMissionIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MissionsMissionIdRoute,
+} as any)
+const MissionsMissionIdTeacherRoute =
+  MissionsMissionIdTeacherRouteImport.update({
+    id: '/teacher',
+    path: '/teacher',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
+const MissionsMissionIdScratchRoute =
+  MissionsMissionIdScratchRouteImport.update({
+    id: '/scratch',
+    path: '/scratch',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
+const MissionsMissionIdResourcesRoute =
+  MissionsMissionIdResourcesRouteImport.update({
+    id: '/resources',
+    path: '/resources',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
+const MissionsMissionIdQuizRoute = MissionsMissionIdQuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => MissionsMissionIdRoute,
+} as any)
+const MissionsMissionIdLessonRoute = MissionsMissionIdLessonRouteImport.update({
+  id: '/lesson',
+  path: '/lesson',
+  getParentRoute: () => MissionsMissionIdRoute,
+} as any)
+const MissionsMissionIdJournalRoute =
+  MissionsMissionIdJournalRouteImport.update({
+    id: '/journal',
+    path: '/journal',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
+const MissionsMissionIdHomeworkRoute =
+  MissionsMissionIdHomeworkRouteImport.update({
+    id: '/homework',
+    path: '/homework',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
+const MissionsMissionIdCompleteRoute =
+  MissionsMissionIdCompleteRouteImport.update({
+    id: '/complete',
+    path: '/complete',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
+const MissionsMissionIdActivitiesRoute =
+  MissionsMissionIdActivitiesRouteImport.update({
+    id: '/activities',
+    path: '/activities',
+    getParentRoute: () => MissionsMissionIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/curriculum': typeof CurriculumRoute
+  '/missions/$missionId': typeof MissionsMissionIdRouteWithChildren
+  '/missions/$missionId/activities': typeof MissionsMissionIdActivitiesRoute
+  '/missions/$missionId/complete': typeof MissionsMissionIdCompleteRoute
+  '/missions/$missionId/homework': typeof MissionsMissionIdHomeworkRoute
+  '/missions/$missionId/journal': typeof MissionsMissionIdJournalRoute
+  '/missions/$missionId/lesson': typeof MissionsMissionIdLessonRoute
+  '/missions/$missionId/quiz': typeof MissionsMissionIdQuizRoute
+  '/missions/$missionId/resources': typeof MissionsMissionIdResourcesRoute
+  '/missions/$missionId/scratch': typeof MissionsMissionIdScratchRoute
+  '/missions/$missionId/teacher': typeof MissionsMissionIdTeacherRoute
+  '/missions/$missionId/': typeof MissionsMissionIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/curriculum': typeof CurriculumRoute
+  '/missions/$missionId/activities': typeof MissionsMissionIdActivitiesRoute
+  '/missions/$missionId/complete': typeof MissionsMissionIdCompleteRoute
+  '/missions/$missionId/homework': typeof MissionsMissionIdHomeworkRoute
+  '/missions/$missionId/journal': typeof MissionsMissionIdJournalRoute
+  '/missions/$missionId/lesson': typeof MissionsMissionIdLessonRoute
+  '/missions/$missionId/quiz': typeof MissionsMissionIdQuizRoute
+  '/missions/$missionId/resources': typeof MissionsMissionIdResourcesRoute
+  '/missions/$missionId/scratch': typeof MissionsMissionIdScratchRoute
+  '/missions/$missionId/teacher': typeof MissionsMissionIdTeacherRoute
+  '/missions/$missionId': typeof MissionsMissionIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/curriculum': typeof CurriculumRoute
+  '/missions/$missionId': typeof MissionsMissionIdRouteWithChildren
+  '/missions/$missionId/activities': typeof MissionsMissionIdActivitiesRoute
+  '/missions/$missionId/complete': typeof MissionsMissionIdCompleteRoute
+  '/missions/$missionId/homework': typeof MissionsMissionIdHomeworkRoute
+  '/missions/$missionId/journal': typeof MissionsMissionIdJournalRoute
+  '/missions/$missionId/lesson': typeof MissionsMissionIdLessonRoute
+  '/missions/$missionId/quiz': typeof MissionsMissionIdQuizRoute
+  '/missions/$missionId/resources': typeof MissionsMissionIdResourcesRoute
+  '/missions/$missionId/scratch': typeof MissionsMissionIdScratchRoute
+  '/missions/$missionId/teacher': typeof MissionsMissionIdTeacherRoute
+  '/missions/$missionId/': typeof MissionsMissionIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/curriculum'
+    | '/missions/$missionId'
+    | '/missions/$missionId/activities'
+    | '/missions/$missionId/complete'
+    | '/missions/$missionId/homework'
+    | '/missions/$missionId/journal'
+    | '/missions/$missionId/lesson'
+    | '/missions/$missionId/quiz'
+    | '/missions/$missionId/resources'
+    | '/missions/$missionId/scratch'
+    | '/missions/$missionId/teacher'
+    | '/missions/$missionId/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/curriculum'
+    | '/missions/$missionId/activities'
+    | '/missions/$missionId/complete'
+    | '/missions/$missionId/homework'
+    | '/missions/$missionId/journal'
+    | '/missions/$missionId/lesson'
+    | '/missions/$missionId/quiz'
+    | '/missions/$missionId/resources'
+    | '/missions/$missionId/scratch'
+    | '/missions/$missionId/teacher'
+    | '/missions/$missionId'
+  id:
+    | '__root__'
+    | '/'
+    | '/curriculum'
+    | '/missions/$missionId'
+    | '/missions/$missionId/activities'
+    | '/missions/$missionId/complete'
+    | '/missions/$missionId/homework'
+    | '/missions/$missionId/journal'
+    | '/missions/$missionId/lesson'
+    | '/missions/$missionId/quiz'
+    | '/missions/$missionId/resources'
+    | '/missions/$missionId/scratch'
+    | '/missions/$missionId/teacher'
+    | '/missions/$missionId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CurriculumRoute: typeof CurriculumRoute
+  MissionsMissionIdRoute: typeof MissionsMissionIdRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/curriculum': {
+      id: '/curriculum'
+      path: '/curriculum'
+      fullPath: '/curriculum'
+      preLoaderRoute: typeof CurriculumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +210,119 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/missions/$missionId': {
+      id: '/missions/$missionId'
+      path: '/missions/$missionId'
+      fullPath: '/missions/$missionId'
+      preLoaderRoute: typeof MissionsMissionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/missions/$missionId/': {
+      id: '/missions/$missionId/'
+      path: '/'
+      fullPath: '/missions/$missionId/'
+      preLoaderRoute: typeof MissionsMissionIdIndexRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/teacher': {
+      id: '/missions/$missionId/teacher'
+      path: '/teacher'
+      fullPath: '/missions/$missionId/teacher'
+      preLoaderRoute: typeof MissionsMissionIdTeacherRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/scratch': {
+      id: '/missions/$missionId/scratch'
+      path: '/scratch'
+      fullPath: '/missions/$missionId/scratch'
+      preLoaderRoute: typeof MissionsMissionIdScratchRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/resources': {
+      id: '/missions/$missionId/resources'
+      path: '/resources'
+      fullPath: '/missions/$missionId/resources'
+      preLoaderRoute: typeof MissionsMissionIdResourcesRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/quiz': {
+      id: '/missions/$missionId/quiz'
+      path: '/quiz'
+      fullPath: '/missions/$missionId/quiz'
+      preLoaderRoute: typeof MissionsMissionIdQuizRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/lesson': {
+      id: '/missions/$missionId/lesson'
+      path: '/lesson'
+      fullPath: '/missions/$missionId/lesson'
+      preLoaderRoute: typeof MissionsMissionIdLessonRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/journal': {
+      id: '/missions/$missionId/journal'
+      path: '/journal'
+      fullPath: '/missions/$missionId/journal'
+      preLoaderRoute: typeof MissionsMissionIdJournalRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/homework': {
+      id: '/missions/$missionId/homework'
+      path: '/homework'
+      fullPath: '/missions/$missionId/homework'
+      preLoaderRoute: typeof MissionsMissionIdHomeworkRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/complete': {
+      id: '/missions/$missionId/complete'
+      path: '/complete'
+      fullPath: '/missions/$missionId/complete'
+      preLoaderRoute: typeof MissionsMissionIdCompleteRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
+    '/missions/$missionId/activities': {
+      id: '/missions/$missionId/activities'
+      path: '/activities'
+      fullPath: '/missions/$missionId/activities'
+      preLoaderRoute: typeof MissionsMissionIdActivitiesRouteImport
+      parentRoute: typeof MissionsMissionIdRoute
+    }
   }
 }
 
+interface MissionsMissionIdRouteChildren {
+  MissionsMissionIdActivitiesRoute: typeof MissionsMissionIdActivitiesRoute
+  MissionsMissionIdCompleteRoute: typeof MissionsMissionIdCompleteRoute
+  MissionsMissionIdHomeworkRoute: typeof MissionsMissionIdHomeworkRoute
+  MissionsMissionIdJournalRoute: typeof MissionsMissionIdJournalRoute
+  MissionsMissionIdLessonRoute: typeof MissionsMissionIdLessonRoute
+  MissionsMissionIdQuizRoute: typeof MissionsMissionIdQuizRoute
+  MissionsMissionIdResourcesRoute: typeof MissionsMissionIdResourcesRoute
+  MissionsMissionIdScratchRoute: typeof MissionsMissionIdScratchRoute
+  MissionsMissionIdTeacherRoute: typeof MissionsMissionIdTeacherRoute
+  MissionsMissionIdIndexRoute: typeof MissionsMissionIdIndexRoute
+}
+
+const MissionsMissionIdRouteChildren: MissionsMissionIdRouteChildren = {
+  MissionsMissionIdActivitiesRoute: MissionsMissionIdActivitiesRoute,
+  MissionsMissionIdCompleteRoute: MissionsMissionIdCompleteRoute,
+  MissionsMissionIdHomeworkRoute: MissionsMissionIdHomeworkRoute,
+  MissionsMissionIdJournalRoute: MissionsMissionIdJournalRoute,
+  MissionsMissionIdLessonRoute: MissionsMissionIdLessonRoute,
+  MissionsMissionIdQuizRoute: MissionsMissionIdQuizRoute,
+  MissionsMissionIdResourcesRoute: MissionsMissionIdResourcesRoute,
+  MissionsMissionIdScratchRoute: MissionsMissionIdScratchRoute,
+  MissionsMissionIdTeacherRoute: MissionsMissionIdTeacherRoute,
+  MissionsMissionIdIndexRoute: MissionsMissionIdIndexRoute,
+}
+
+const MissionsMissionIdRouteWithChildren =
+  MissionsMissionIdRoute._addFileChildren(MissionsMissionIdRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CurriculumRoute: CurriculumRoute,
+  MissionsMissionIdRoute: MissionsMissionIdRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

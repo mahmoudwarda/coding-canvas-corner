@@ -428,5 +428,5 @@ export const mission1: Mission = {
     { id: "j3", prompt: "What is one thing you want to build next?" },
   ],
 
-  nextMissionId: undefined,
+  nextMissionId: "mission-2",
 };
